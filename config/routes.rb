@@ -7,7 +7,7 @@ AuthenticationFromScratch::Application.routes.draw do
   # root 'welcome#index'
   resources :users
   resources :sessions
-  root 'users#new'
+  root 'static_pages#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
