@@ -14,4 +14,13 @@ class User < ActiveRecord::Base
 			uniqueness: true, length: { minimum: 6 }
     validates :phone, presence: true, length: { maximum: 50 }
     validates :password, length: { minimum: 6 }	
+
+	def self.authenticate_user(email, password)
+	  user = find_by_email(email)
+	  if user && user.authenticate(password)
+	     user
+	  else
+	     nil
+	  end
+	end  
 end
