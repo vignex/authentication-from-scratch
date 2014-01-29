@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
- def new
+  def new
   end
   
   def create
@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
     else
       flash.now.alert = "Invalid Email or Password"
       render 'new'
+    end
   end
   
   def destroy
