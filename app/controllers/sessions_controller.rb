@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  
+  before_action :check_signed_in, except: :destroy
+
   def new
   end
   
@@ -8,7 +11,8 @@ class SessionsController < ApplicationController
     
 	  #If user is authenticated store user.id in a session variable and redirect, Otherwise display flash message and render 'new'
     if user
-      session[:user] = user.id
+      sign_in user if params[:remember_me]
+      session_create user.id
       redirect_to root_url
     else
       flash.now.alert = "Invalid Email or Password"
@@ -17,7 +21,17 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-    session[:user] = nil
+    sign_out
+    session_destroy
     redirect_to root_url, notice: "Signed out successfully"
   end
+
+  private
+  def check_signed_in
+    if signed_in?
+      flash.now.alert = "Already signed in"
+      redirect_to root_url
+    end
+  end
+
 end
