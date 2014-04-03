@@ -34,10 +34,10 @@ class User < ActiveRecord::Base
 
     #Generate a base64 token using SecureRandom.urlsafe_base64 and update the time the email is sent.
     #Since we will be implementing password reset we can use the same fields for confirmation too. 
-    #:password_reset_token and :password_reset_sent_at
+    #:password_reset_token and :password_sent_at
     def send_confirmation
       self.update_column(:password_reset_token, SecureRandom.urlsafe_base64)
-      self.update_column(:password_reset_sent_at, Time.zone.now)
+      self.update_column(:password_sent_at, Time.zone.now)
       UserMailer.send_confirmation_mail(self).deliver
     end
 end
