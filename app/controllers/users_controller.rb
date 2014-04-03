@@ -13,6 +13,17 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+
+  def account_confirmation
+    @user = User.find_by_password_reset_token(params[:token])
+    if(@user)
+      @user.update_column(:email_confirmed, true)
+      @user.update_column(:password_reset_token, nil)
+      redirect_to new_session_url, :notice => "Account confirmed"
+    else
+      redirect_to new_session_url, :notice => "Account could not be confirmed"
+    end
+  end
   
   private
     def user_params

@@ -8,6 +8,7 @@ AuthenticationFromScratch::Application.routes.draw do
   resources :users
   resources :sessions
   root 'static_pages#index'
+  get 'account_confirmation', to: 'users#account_confirmation'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
