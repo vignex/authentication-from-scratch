@@ -6,10 +6,8 @@ class SessionsController < ApplicationController
   end
   
   def create
-	  #Call authenticate_user method
     user = User.authenticate_user(params[:email], params[:password])
     
-	  #If user is authenticated store user.id in a session variable and redirect, Otherwise display flash message and render 'new'
     if user
       sign_in user if params[:remember_me]
       session_create user.id

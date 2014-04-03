@@ -7,14 +7,12 @@
     <%= label_tag :password %>
     <%= password_field_tag :password, nil, :placeholder => "Password" %>
   </div>
-  <!-- We will get to this in a while -->
   <div class="field">
     <%= label_tag :remember_me ,:class => "checkbox vsmall" do %>
 	  <%= check_box_tag :remember_me, 1, params[:remember_me] %>
 	  Remember me
     <% end %>
   </div>
-  <!-- end block -->
   <br>
   <div class="actions">
     <%= submit_tag :sign_in, :value => "Sign in" %>
