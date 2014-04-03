@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  
+  before_action :check_signed_in, except: [:new, :create, :account_confirmation]  
+
   def new
     @user = User.new
   end
@@ -11,6 +14,20 @@ class UsersController < ApplicationController
       redirect_to root_url, notice: "User Registered successfully"
     else
       render 'new'
+    end
+  end
+
+  def show
+  end
+  
+  def edit
+  end
+  
+  def update
+    if @user.update_attributes(user_params)
+      redirect_to root_url, notice: "User updated successfully"
+    else
+      render 'edit'
     end
   end
 
@@ -28,5 +45,14 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:name,:email,:phone,:password,:password_confirmation)
+    end
+    
+    def check_signed_in
+      if !signed_in?
+        flash.alert.now = "Please sign in to continue"
+        redirect_to root_url
+      else
+        @user = current_user
+      end
     end
 end
