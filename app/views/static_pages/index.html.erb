@@ -1,6 +1,6 @@
-<% if session[:user] %>
-  <h2>Hello <%= (user = User.find(session[:user])).name %></h2>
-  <h5><%= link_to "Signout", session_path(user), method: :delete %>
+<% if signed_in? %>
+  <h2>Hello <%= current_user.name %></h2>
+  <h5><%= link_to "Signout", session_path(current_user), method: :delete %>
 <% else %>
   <%= link_to "Register", new_user_path %>
   <%= link_to "Login", new_session_path %>
