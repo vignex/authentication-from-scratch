@@ -5,8 +5,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-	#Redirect to root url with success message if registered, otherwise render new
+	  #Redirect to root url with success message if registered, otherwise render new
     if @user.save!
+      @user.send_confirmation
       redirect_to root_url, notice: "User Registered successfully"
     else
       render 'new'
