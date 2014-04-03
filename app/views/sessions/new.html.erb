@@ -9,8 +9,8 @@
   </div>
   <div class="field">
     <%= label_tag :remember_me ,:class => "checkbox vsmall" do %>
-	  <%= check_box_tag :remember_me, 1, params[:remember_me] %>
-	  Remember me
+      <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+      Remember me
     <% end %>
   </div>
   <br>
@@ -20,7 +20,7 @@
   <br>
   <div class="messages">
     <% flash.each do |name,msg| %>
-       <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
     <% end %>
   </div>
 <% end %>
