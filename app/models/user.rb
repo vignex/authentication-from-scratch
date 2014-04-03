@@ -23,4 +23,21 @@ class User < ActiveRecord::Base
 	     nil
 	  end
 	end  
+
+    #Along with email and password also check whether email is confirmed    
+    def self.authenticate_user(email, password)
+      user = find_by_email(email)
+      if user && user.authenticate(password)
+       user if user.email_confirmed
+      end
+    end
+
+    #Generate a base64 token using SecureRandom.urlsafe_base64 and update the time the email is sent.
+    #Since we will be implementing password reset we can use the same fields for confirmation too. 
+    #:password_reset_token and :password_reset_sent_at
+    def send_confirmation
+      self.update_column(:password_reset_token, SecureRandom.urlsafe_base64)
+      self.update_column(:password_reset_sent_at, Time.zone.now)
+      UserMailer.send_confirmation_mail(self).deliver
+    end
 end
