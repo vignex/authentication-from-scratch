@@ -1,26 +1,5 @@
-<%= form_tag sessions_path do %>
-  <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email, params[:email], :placeholder => "Email address" %>
+<div class="container">
+  <div class="row">
+    <%= render 'partials/login' %>
   </div>
-  <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password, nil, :placeholder => "Password" %>
-  </div>
-  <div class="field">
-    <%= label_tag :remember_me ,:class => "checkbox vsmall" do %>
-      <%= check_box_tag :remember_me, 1, params[:remember_me] %>
-      Remember me
-    <% end %>
-  </div>
-  <br>
-  <div class="actions">
-    <%= submit_tag :sign_in, :value => "Sign in" %>
-  </div>
-  <br>
-  <div class="messages">
-    <% flash.each do |name,msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
-    <% end %>
-  </div>
-<% end %>
+</div>
