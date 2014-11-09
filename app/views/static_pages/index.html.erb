@@ -1,13 +1,10 @@
-<div class="container">
-  <div class="row">
-    <% if signed_in? %>
-      <h5>Hello
-        <%= current_user.name %>
-      </h5>
-    <% else %>
-      <%= render 'partials/login' %><br>
-      <%= link_to 'Forgot Password', new_password_reset_path %>
-    <% end %>    
-  </div>
+<div class="row">
+  <% if signed_in? %>
+    <h5>Hello
+      <%= current_user.name %>
+    </h5>
+  <% else %>
+    <%= render 'partials/login' %><br>
+  <% end %>    
 </div>
 
