@@ -1,8 +1,9 @@
 <div class="row">
   <% if signed_in? %>
-    <h5>Hello
-      <%= current_user.name %>
-    </h5>
+    <div class="jumbotron">
+      <h2>Hello, <%= current_user.name %>!</h2><br>
+      <h5>Find the complete source code on <%= link_to "Github", "https://github.com/Just-hack/authentication-from-scratch", target: "_blank" %>
+    </div>
   <% else %>
     <%= render 'partials/login' %><br>
   <% end %>    
