@@ -84,9 +84,9 @@ AuthenticationFromScratch::Application.configure do
   ActionMailer::Base.perform_deliveries = true
 
   ActionMailer::Base.smtp_settings = {
-    :address              => "smtp.gmail.com",
+    :address              => "smtp.sendgrid.net",
     :port                 => "587",
-    :domain               => "gmail.com",
+    :domain               => "heroku.com",
     :user_name            => ENV["USERNAME"],
     :password             => ENV["PASSWORD"],
     :authentication       => "plain",
