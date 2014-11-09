@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3">
+    <h4>Forgot Password </h4>
+    <%= form_tag password_resets_path do %>
+      <div class="form-group">
+        <%= label_tag :email %>
+        <%= text_field_tag :email, params[:email], :placeholder => "Email address", class: "form-control" %>
+      </div>
+      <div class="actions">
+        <%= submit_tag :recover, value: "Recover", class: "btn btn-primary" %>
+      </div>
+      <div class="messages">
+        <% flash.each do |name,msg| %>
+          <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <%= msg %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>    
+  </div>
+</div>

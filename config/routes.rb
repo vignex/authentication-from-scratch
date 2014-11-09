@@ -7,6 +7,7 @@ AuthenticationFromScratch::Application.routes.draw do
   # root 'welcome#index'
   resources :users
   resources :sessions
+  resources :password_resets
   root 'static_pages#index'
   get 'account_confirmation', to: 'users#account_confirmation'
   # Example of regular route:
